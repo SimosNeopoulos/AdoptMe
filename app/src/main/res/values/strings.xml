@@ -3,4 +3,9 @@
     <string name="login">ΣΥΝΔΕΣΗ</string>
     <string name="emailtext">email</string>
     <string name="passwordtext">password</string>
+    <string name="name">Name</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="password_verification">Password Verification</string>
 </resources>
