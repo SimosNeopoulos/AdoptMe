@@ -8,4 +8,5 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="password_verification">Password Verification</string>
+    <string name="click_to_log_in">Click To Log In!</string>
 </resources>

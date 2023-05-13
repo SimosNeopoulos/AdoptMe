@@ -7,7 +7,7 @@
     tools:context=".SignUpActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/signUpText"
         android:layout_width="209dp"
         android:layout_height="59dp"
         android:text="@string/sign_up"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.081" />
 
     <EditText
-        android:id="@+id/editTextText3"
+        android:id="@+id/signUpName"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.245" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress4"
+        android:id="@+id/signUpEmail"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <EditText
-        android:id="@+id/editTextTextPassword6"
+        android:id="@+id/signUpPassword"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.513" />
 
     <EditText
-        android:id="@+id/editTextTextPassword7"
+        android:id="@+id/signUpPasswordVerification"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -75,13 +75,28 @@
         app:layout_constraintVertical_bias="0.645" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signUpBtn"
         android:layout_width="153dp"
         android:layout_height="65dp"
+        android:onClick="signUp"
         android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.832" />
+
+    <TextView
+        android:id="@+id/signUpToLogIn"
+        android:layout_width="78dp"
+        android:layout_height="23dp"
+        android:text="@string/click_to_log_in"
+        android:textAlignment="center"
+        android:onClick="goToLogInPage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.904" />
 </androidx.constraintlayout.widget.ConstraintLayout>
