@@ -1,28 +1,33 @@
 package com.example.adoptme;
 
-import android.content.Intent;
+
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LoginActivity extends AppCompatActivity {
 
-    private Button Save;
+public class LoginActivity extends AppCompatActivity {
+    Button b1;
+    EditText ed1,ed2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Save = (Button) findViewById(R.id.loginButton);
-
-        Save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mainActivity = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(mainActivity);
+        b1 = findViewById(R.id.button);
+        ed1 = findViewById(R.id.editText);
+        ed2 = findViewById(R.id.editText2);
+        b1.setOnClickListener(v -> {
+            if(ed1.getText().toString().equals("admin") &&
+                    ed2.getText().toString().equals("admin")) {
+                Toast.makeText(getApplicationContext(),
+                        "Redirecting...",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getApplicationContext(), "Wrong Credentials",Toast.LENGTH_SHORT).show();
             }
         });
     }
