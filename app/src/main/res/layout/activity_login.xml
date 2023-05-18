@@ -4,7 +4,7 @@
     android:layout_height = "match_parent">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/LoginEmail"
         android:layout_width="338dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -15,17 +15,17 @@
         android:autofillHints=""
         android:focusable="true"
         android:hint="@string/email"
-        android:inputType=""
+        android:inputType="textEmailAddress"
         android:textColorHighlight="#ff7eff15"
         android:textColorHint="#ffff299f" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/PasswordEmail"
         android:layout_width="338dp"
         android:layout_height="44dp"
         android:layout_above="@+id/button"
-        android:layout_below="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
+        android:layout_below="@+id/LoginEmail"
+        android:layout_alignEnd="@+id/LoginEmail"
         android:layout_alignParentStart="true"
         android:layout_marginStart="19dp"
         android:layout_marginTop="15dp"

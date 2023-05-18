@@ -1,9 +1,9 @@
 package com.example.adoptme;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,16 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
     EditText name, email, password, passwordVerification;
     Button submitBtn;
-    FirebaseAuth mAuth;
+
     TextView goToLogIn;
 
     @Override
@@ -34,7 +30,7 @@ public class SignUpActivity extends AppCompatActivity {
         passwordVerification = findViewById(R.id.signUpPasswordVerification);
         submitBtn = findViewById(R.id.signUpBtn);
         goToLogIn = findViewById(R.id.signUpToLogIn);
-        mAuth = FirebaseAuth.getInstance();
+
 
     }
 
@@ -55,20 +51,6 @@ public class SignUpActivity extends AppCompatActivity {
 
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        // TODO: Να το ολοκληρώσω
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-
-                        }
-                    }
-                });
     }
 
     private boolean checkForEmptyStrings(String name, String email, String password, String password2) {
@@ -77,7 +59,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void goToLogInPage(View view) {
-        Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(intent);
         finish();
     }
