@@ -39,9 +39,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    public Boolean checkEmailPassword(String email, String password) {
+    public User checkEmailPassword(String email, String password) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ? and password = ?", new String[]{email, password});
-        return cursor.getCount() > 0;
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                email = cursor.getString(1);
+                password = cursor.getString(2);
+                String name = cursor.getString(3);
+                return new User(name, email, password);
+            }
+        }
+        return null;
     }
 }
