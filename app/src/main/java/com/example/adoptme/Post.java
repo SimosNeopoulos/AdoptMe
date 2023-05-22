@@ -20,6 +20,16 @@ public class Post {
         this.phoneNumber = phoneNumber;
     }
 
+    public Post(int postId, String townName, String species, String petName, int age, String phoneNumber, ArrayList<String> imagePaths) {
+        this.postId = postId;
+        this.townName = townName;
+        this.species = species;
+        this.petName = petName;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.imagePaths = imagePaths;
+    }
+
     public void setImagePaths(ArrayList<String> imagePaths) {
         this.imagePaths = imagePaths;
     }

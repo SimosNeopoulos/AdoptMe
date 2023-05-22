@@ -60,7 +60,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("age", age);
         contentValues.put("phone_number", phoneNumber);
         long post_id = MyDatabase.insert("posts", null, contentValues);
-        if(post_id != -1) {
+        if (post_id != -1) {
             insertImagePaths(images, post_id);
             return true;
         }
@@ -83,7 +83,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    private Cursor getPosts(String queryParameters, String townName, String species, int age) {
+    private ArrayList<Post> getPosts(String queryParameters, String townName, String species, int age) {
+        ArrayList<Post> posts = new ArrayList<>();
+        Cursor cursor = getPostsFromDatabase(queryParameters, townName, species, age);
+        if (cursor == null)
+            return null;
+
+        do {
+            int id = cursor.getInt(0);
+            String town = cursor.getString(1);
+            String postSpecies = cursor.getString(2);
+            String petName = cursor.getString(3);
+            int postAge = cursor.getInt(4);
+            String phoneNumber = cursor.getString(5);
+            ArrayList<String> imagePaths = getImagePaths(id);
+            posts.add(new Post(id, town, postSpecies, petName, postAge, phoneNumber, imagePaths));
+        } while (cursor.moveToNext());
+        return posts;
+    }
+
+    private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age) {
         @SuppressLint("Recycle") Cursor cursor;
         SQLiteDatabase myDatabase = this.getWritableDatabase();
         switch (queryParameters) {
