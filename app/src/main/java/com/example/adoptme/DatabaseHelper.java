@@ -141,9 +141,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ? and password = ?", new String[]{email, password});
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
-                email = cursor.getString(1);
-                password = cursor.getString(2);
-                String name = cursor.getString(3);
+                email = cursor.getString(0);
+                password = cursor.getString(1);
+                String name = cursor.getString(2);
                 return new User(name, email, password);
             }
         }
