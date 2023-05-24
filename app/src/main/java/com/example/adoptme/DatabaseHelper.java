@@ -30,9 +30,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         MyDatabase.execSQL("CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT, town TEXT," +
-                "species TEXT, pet_name TEXT, age INTEGER, phone_number TEXT)");
+                "species TEXT, pet_name TEXT, age INTEGER, phone_number TEXT, userId INTEGER, post_discription TEXT)");
         MyDatabase.execSQL("CREATE INDEX idx_town ON posts(town)");
         MyDatabase.execSQL("CREATE INDEX idx_species ON posts(species)");
+        MyDatabase.execSQL("CREATE INDEX idx_userId ON posts(userId)");
 
     }
 
@@ -51,7 +52,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean insertPost(String town, String species, String petName, int age, String phoneNumber, ArrayList<String> images) {
+    public boolean insertPost(String town, String species, String petName, int age, String phoneNumber,
+                              ArrayList<String> images, int userId, String post_discription) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("town", town);
@@ -59,6 +61,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("pet_name", petName);
         contentValues.put("age", age);
         contentValues.put("phone_number", phoneNumber);
+        contentValues.put("userId", userId);
+        contentValues.put("post_discription", post_discription);
         long post_id = MyDatabase.insert("posts", null, contentValues);
         if (post_id != -1) {
             insertImagePaths(images, post_id);
@@ -83,9 +87,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    private ArrayList<Post> getPosts(String queryParameters, String townName, String species, int age) {
+    private ArrayList<Post> getPosts(String queryParameters, String townName, String species, int age, int userId) {
         ArrayList<Post> posts = new ArrayList<>();
-        Cursor cursor = getPostsFromDatabase(queryParameters, townName, species, age);
+        Cursor cursor = getPostsFromDatabase(queryParameters, townName, species, age, userId);
         if (cursor == null)
             return null;
 
@@ -96,13 +100,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String petName = cursor.getString(3);
             int postAge = cursor.getInt(4);
             String phoneNumber = cursor.getString(5);
+            int postUserId = cursor.getInt(6);
+            String postDescription = cursor.getString(7);
             ArrayList<String> imagePaths = getImagePaths(id);
-            posts.add(new Post(id, town, postSpecies, petName, postAge, phoneNumber, imagePaths));
+            posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber, imagePaths));
         } while (cursor.moveToNext());
         return posts;
     }
 
-    private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age) {
+    private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age, int userId) {
         @SuppressLint("Recycle") Cursor cursor;
         SQLiteDatabase myDatabase = this.getWritableDatabase();
         switch (queryParameters) {
@@ -134,6 +140,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor = myDatabase.rawQuery("Select * from posts where " +
                         "age = ?", new String[]{Integer.toString(age)});
                 break;
+
+            case "uid":
+                cursor = myDatabase.rawQuery("Select * from posts where " +
+                        "userId = ?", new String[]{Integer.toString(userId)});
 
             default:
                 throw new IllegalStateException("Unexpected value: " + queryParameters);

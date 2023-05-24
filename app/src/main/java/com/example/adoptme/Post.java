@@ -8,24 +8,20 @@ public class Post {
     private String species;
     private String petName;
     private int age;
+    private int userId;
+    private String postDescription;
     private String phoneNumber;
     private ArrayList<String> imagePaths;
 
-    public Post(int postId, String townName, String species, String petName, int age, String phoneNumber) {
+    public Post(int postId, String townName, String species, String petName, int age, int userId,
+                String postDescription, String phoneNumber, ArrayList<String> imagePaths) {
         this.postId = postId;
         this.townName = townName;
         this.species = species;
         this.petName = petName;
         this.age = age;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Post(int postId, String townName, String species, String petName, int age, String phoneNumber, ArrayList<String> imagePaths) {
-        this.postId = postId;
-        this.townName = townName;
-        this.species = species;
-        this.petName = petName;
-        this.age = age;
+        this.userId = userId;
+        this.postDescription = postDescription;
         this.phoneNumber = phoneNumber;
         this.imagePaths = imagePaths;
     }
@@ -36,6 +32,14 @@ public class Post {
 
     public int getPostId() {
         return postId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getPostDescription() {
+        return postDescription;
     }
 
     public String getTownName() {
