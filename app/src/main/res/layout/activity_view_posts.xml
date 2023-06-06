@@ -21,7 +21,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
+            <ImageView
                 android:id="@+id/uPictureIv"
                 android:scaleType="centerCrop"
                 android:src="@drawable/user"
@@ -83,7 +83,6 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/blue"
                 android:text="Like"
-                android:drawableLeft="@drawable/ic_like"
                 android:background="@null"
                 android:drawablePadding="5dp"/>
             <Button
