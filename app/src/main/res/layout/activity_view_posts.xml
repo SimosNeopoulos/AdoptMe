@@ -52,60 +52,24 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/pTitleTv"
+            android:id="@+id/postTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:textStyle="bold"
             android:text="Title"/>
         <TextView
-            android:id="@+id/pDescriptionTv"
+            android:id="@+id/postDescription"
             android:text="Post Description"
             android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <ImageView
-            android:id="@+id/pImageIv"
+            android:id="@+id/postImage"
             android:contentDescription="@string/nav_header_desc"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@color/white"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <Button
-                android:id="@+id/likeBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/blue"
-                android:text="Like"
-                android:background="@null"
-                android:drawablePadding="5dp"/>
-            <Button
-                android:id="@+id/commentBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/blue"
-                android:text="Comment"
-                android:drawableLeft="@drawable/ic_comment"
-                android:background="@null"
-                android:drawablePadding="5dp"/>
-            <Button
-                android:id="@+id/shareBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/blue"
-                android:text="share"
-                android:drawableLeft="@drawable/ic_share"
-                android:background="@null"
-                android:drawablePadding="5dp"/>
-        </LinearLayout>
 
     </LinearLayout>
 
