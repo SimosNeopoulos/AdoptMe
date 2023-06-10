@@ -30,11 +30,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         MyDatabase.execSQL("CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT, town TEXT," +
-                "species TEXT, pet_name TEXT, age INTEGER, phone_number TEXT, userId INTEGER, post_discription TEXT)");
+                "species TEXT, pet_name TEXT, age INTEGER, phone_number TEXT, userId INTEGER," +
+                "post_discription TEXT, img_path TEXT)");
         MyDatabase.execSQL("CREATE INDEX idx_town ON posts(town)");
         MyDatabase.execSQL("CREATE INDEX idx_species ON posts(species)");
         MyDatabase.execSQL("CREATE INDEX idx_userId ON posts(userId)");
-
+        MyDatabase.execSQL("CREATE INDEX idx_age ON posts(age)");
     }
 
     @Override
@@ -53,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertPost(String town, String species, String petName, int age, String phoneNumber,
-                              ArrayList<String> images, int userId, String post_discription) {
+                              String imagePath, int userId, String post_discription) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("town", town);
@@ -63,23 +64,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("phone_number", phoneNumber);
         contentValues.put("userId", userId);
         contentValues.put("post_discription", post_discription);
+        contentValues.put("img_path", imagePath);
         long post_id = MyDatabase.insert("posts", null, contentValues);
-        if (post_id != -1) {
-            insertImagePaths(images, post_id);
-            return true;
-        }
-        return false;
+        return post_id != -1;
+//        if (post_id != -1) {
+////            insertImagePaths(imagePath, post_id);
+//            return true;
+//        }
+//        return false;
     }
 
-    private void insertImagePaths(ArrayList<String> image_paths, long postId) {
+    public void updatePost(int postId, String town, String species, String petName, int age, String phoneNumber,
+                              String post_discription) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
-        for (String image_path : image_paths) {
-            ContentValues contentValues = new ContentValues();
-            contentValues.put("path", image_path);
-            contentValues.put("post_id", postId);
-            MyDatabase.insert("image_path", null, contentValues);
-        }
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("town", town);
+        contentValues.put("species", species);
+        contentValues.put("pet_name", petName);
+        contentValues.put("age", age);
+        contentValues.put("phone_number", phoneNumber);
+        contentValues.put("post_discription", post_discription);
+        String[] whereArgs = {String.valueOf(postId)};
+        MyDatabase.update("posts", contentValues, "id = ?", whereArgs);
     }
+
+//    private void insertImagePaths(ArrayList<String> image_paths, long postId) {
+//        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+//        for (String image_path : image_paths) {
+//            ContentValues contentValues = new ContentValues();
+//            contentValues.put("path", image_path);
+//            contentValues.put("post_id", postId);
+//            MyDatabase.insert("image_path", null, contentValues);
+//        }
+//    }
 
     public Boolean checkEmail(String email) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
