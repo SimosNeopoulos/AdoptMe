@@ -29,14 +29,38 @@
             android:minHeight="200dp"/>
 
         <EditText
-            android:id="@+id/pDescriptionEt"
+            android:id="@+id/petName"
             android:padding="10dp"
-            android:hint="Enter description"
-            android:inputType="textCapSentences|textMultiLine"
-            android:minHeight="120dp"
+            android:hint="Pet name"
+            android:inputType="text"
+            android:minHeight="50dp"
             android:gravity="start"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/petAge"
+            android:padding="10dp"
+            android:hint="Pet age"
+            android:inputType="number"
+            android:minHeight="50dp"
+            android:gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/petLocation"
+            android:padding="10dp"
+            android:hint="Location"
+            android:inputType="text"
+            android:minHeight="10dp"
+            android:gravity="start"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+
+
+
+
 
         <Button
             style="@style/Widget.AppCompat.Button.Colored"

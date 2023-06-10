@@ -1,79 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="3dp"
-    app:cardElevation="3dp"
-    app:contentPadding="5dp"
-    app:cardUseCompatPadding="true"
-    app:cardBackgroundColor="@color/white">
+    android:layout_height="match_parent"
+    tools:context=".ViewPostActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <SearchView
+        android:id="@+id/petListSearchView"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:iconifiedByDefault="false"
+        android:queryHint="Type"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <SearchView
+            android:id="@+id/ageListSearchView"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:iconifiedByDefault="false"
+            android:queryHint="Age"/>
 
-            <ImageView
-                android:id="@+id/uPictureIv"
-                android:scaleType="centerCrop"
-                android:src="@drawable/user"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="1">
-                <TextView
-                    android:id="@+id/uNameTv"
-                    android:text="Name"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/moreBtn"
-                android:contentDescription="@string/nav_header_desc"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@null"
-                android:src="@drawable/ic_more"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/postTitle"
-            android:layout_width="match_parent"
+        <SearchView
+            android:id="@+id/locationListSearchView"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:text="Title"/>
-        <TextView
-            android:id="@+id/postDescription"
-            android:text="Post Description"
-            android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:id="@+id/postImage"
-            android:contentDescription="@string/nav_header_desc"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/white"/>
-
+            android:iconifiedByDefault="false"
+            android:queryHint="Location"/>
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postsRecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>
 
 
-
-</androidx.cardview.widget.CardView>
