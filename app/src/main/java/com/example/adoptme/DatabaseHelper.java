@@ -132,7 +132,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 break;
 
             case "s":
-                cursor = myDatabase.rawQuery("Select * from posts where " +
+                cursor = myDatabase.rawQuery("Select * from posts where town = ? and" +
                         " species = ?", new String[]{species});
                 break;
 
