@@ -15,7 +15,9 @@
         android:autofillHints=""
         android:focusable="true"
         android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColorHighlight="#ff7eff15"
+        android:textColorHint="#ffff299f" />
 
     <EditText
         android:id="@+id/PasswordEmail"
@@ -31,12 +33,15 @@
         android:layout_marginBottom="19dp"
         android:autofillHints=""
         android:ems="10"
-        android:hint="@string/password" />
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textColorHint="#ffff299f" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="148dp"
         android:layout_height="61dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="115dp"
