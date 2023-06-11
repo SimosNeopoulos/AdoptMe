@@ -40,15 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuItem a = menu.add("Create Post");
-        MenuItem b = menu.add("View Posts");
-        MenuItem c = menu.add("Edit Post");
-        MenuItem d = menu.add("Log out");
-        return true;
-    }
-
     public void setUpToolbar() {
         drawerLayout = findViewById(R.id.my_drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);
