@@ -7,12 +7,7 @@
             android:title="Αρχική" />
 
         <item
-            android:id="@+id/donation"
-            android:title="Αιμοδοσία" />
-
-        <item
-            android:id="@+id/questionnaire"
-            android:title="Ερωτηματολόγιο" />
-
+            android:id="@+id/my_profile"
+            android:title="Το προφίλ μου" />
     </group>
 </menu>

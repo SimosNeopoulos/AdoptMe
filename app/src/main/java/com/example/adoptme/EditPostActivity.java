@@ -15,7 +15,7 @@ public class EditPostActivity extends AppCompatActivity {
     private int postId;
     private EditText name, age, species, description, telephone, town;
     private Button editPostBtn;
-//    private SessionManager sessionManager;
+    //private SessionManager sessionManager;
     DatabaseHelper databaseHelper;
 
     @Override

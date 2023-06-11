@@ -88,15 +88,14 @@
 
     <TextView
         android:id="@+id/signUpToLogIn"
-        android:layout_width="78dp"
-        android:layout_height="23dp"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:onClick="goToLogInPage"
         android:text="@string/click_to_log_in"
         android:textAlignment="center"
-        android:onClick="goToLogInPage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.933" />
 </androidx.constraintlayout.widget.ConstraintLayout>
