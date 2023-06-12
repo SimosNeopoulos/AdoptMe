@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MyProfileActivity">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/editPostToolbar"
+        android:id="@+id/profileToolbar"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.001"
         app:title="Το προφιλ μου" />
     <EditText
-        android:id="@+id/signUpName"
+        android:id="@+id/profileName"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -34,7 +34,7 @@
         app:layout_constraintVertical_bias="0.245" />
 
     <EditText
-        android:id="@+id/signUpEmail"
+        android:id="@+id/profileEmail"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -48,7 +48,7 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <EditText
-        android:id="@+id/signUpPassword"
+        android:id="@+id/profilePassword"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -61,7 +61,7 @@
         app:layout_constraintVertical_bias="0.513" />
 
     <EditText
-        android:id="@+id/signUpPasswordVerification"
+        android:id="@+id/profilePasswordVerification"
         android:layout_width="305dp"
         android:layout_height="56dp"
         android:ems="10"
@@ -75,7 +75,7 @@
         app:layout_constraintVertical_bias="0.645" />
 
     <Button
-        android:id="@+id/signUpBtn"
+        android:id="@+id/profileBtn"
         android:layout_width="153dp"
         android:layout_height="65dp"
         android:onClick="signUp"

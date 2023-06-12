@@ -24,9 +24,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " email TEXT UNIQUE, password TEXT, name TEXT)");
         MyDatabase.execSQL("CREATE INDEX idx_email ON users(email)");
 
-        MyDatabase.execSQL("CREATE TABLE image_path (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "post_id INTEGER, path TEXT)");
-        MyDatabase.execSQL("CREATE INDEX idx_post ON image_path(post_id)");
+//        MyDatabase.execSQL("CREATE TABLE image_path (id INTEGER PRIMARY KEY AUTOINCREMENT," +
+//                "post_id INTEGER, path TEXT)");
+//        MyDatabase.execSQL("CREATE INDEX idx_post ON image_path(post_id)");
 
 
         MyDatabase.execSQL("CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT, town TEXT," +
@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
     }
 
-    public Boolean insertData(String email, String password, String name) {
+    public Boolean createProfile(String email, String password, String name) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", email);
@@ -51,6 +51,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("name", name);
         long result = MyDatabase.insert("users", null, contentValues);
         return result != -1;
+    }
+
+    public void updateProfile(String id, String email, String password, String name) {
+        SQLiteDatabase MyDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("email", email);
+        contentValues.put("password", password);
+        contentValues.put("name", name);
+        MyDatabase.update("users", contentValues, "id = ?", new String[]{id});
     }
 
     public boolean insertPost(String town, String species, String petName, int age, String phoneNumber,
@@ -110,19 +119,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor == null)
             return null;
 
-        do {
-            int id = cursor.getInt(0);
-            String town = cursor.getString(1);
-            String postSpecies = cursor.getString(2);
-            String petName = cursor.getString(3);
-            int postAge = cursor.getInt(4);
-            String phoneNumber = cursor.getString(5);
-            int postUserId = cursor.getInt(6);
-            String postDescription = cursor.getString(7);
-            ArrayList<String> imagePaths = getImagePaths(id);
-            posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber, imagePaths));
-        } while (cursor.moveToNext());
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(0);
+                String town = cursor.getString(1);
+                String postSpecies = cursor.getString(2);
+                String petName = cursor.getString(3);
+                int postAge = cursor.getInt(4);
+                String phoneNumber = cursor.getString(5);
+                int postUserId = cursor.getInt(6);
+                String postDescription = cursor.getString(7);
+                ArrayList<String> imagePaths = getImagePaths(id);
+                posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber, imagePaths));
+            } while (cursor.moveToNext());
+        }
         return posts;
+    }
+
+    public ArrayList<String> getUserById(int id) {
+        ArrayList<String> userData = new ArrayList<>();
+        @SuppressLint("Recycle") Cursor cursor;
+        SQLiteDatabase myDatabase = this.getWritableDatabase();
+        cursor = myDatabase.rawQuery("Select * from users where id = ?", new String[]{Integer.toString(id)});
+        if (!cursor.moveToFirst())
+            return null;
+
+        userData.add(cursor.getString(1));
+        userData.add(cursor.getString(2));
+        userData.add(cursor.getString(3));
+        return userData;
     }
 
     private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age, int userId) {
