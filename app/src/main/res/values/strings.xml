@@ -30,4 +30,7 @@
     <string name="animal_name">Όνομα ζώου</string>
     <string name="add_post">Δημιουργια</string>
     <string name="description">Περιγραφή</string>
+    <string name="main">Αρχική</string>
+    <string name="myprofile">Το προφίλ μου</string>
+    <string name="logout">Αποσύνδεση</string>
 </resources>
