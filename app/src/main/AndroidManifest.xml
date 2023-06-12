@@ -18,7 +18,7 @@
             android:name=".EditPostActivity"
             android:exported="true" />
         <activity
-            android:name=".ViewPostActivity"
+            android:name=".MyProfileActivity"
             android:exported="true" />
         <activity
             android:name=".AddPostActivity"
