@@ -15,10 +15,9 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001"
+        app:layout_constraintVertical_bias="0.0"
         app:title="Επεξεργασία Αγγελίας" />
 
     <EditText
@@ -26,96 +25,100 @@
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Περιγραφή"
+        android:hint="@string/description"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/editPostBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.917" />
+        app:layout_constraintVertical_bias="0.917"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editPostSpecies"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Είδος ζώου"
+        android:hint="@string/species"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editPostTown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861" />
+        app:layout_constraintVertical_bias="0.861"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editPostTown"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Πόλη/Περιοχή"
+        android:hint="@string/city"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editPostAge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.9" />
+        app:layout_constraintVertical_bias="0.9"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editPostPhone"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Τηλέφωνο επικοινωνίας"
+        android:hint="@string/contact_number"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editPostDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editPostToolbar"
-        app:layout_constraintVertical_bias="0.925" />
+        app:layout_constraintVertical_bias="0.925"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editPostAge"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Ηλικία ζώου"
+        android:hint="@string/age"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editPostPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editPostToolbar"
-        app:layout_constraintVertical_bias="0.918" />
+        app:layout_constraintVertical_bias="0.918"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editPostName"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Όνομα ζώου"
+        android:hint="@string/animal_name"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/editPostSpecies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786" />
+        app:layout_constraintVertical_bias="0.786"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/editPostBtn"
         android:layout_width="188dp"
         android:layout_height="55dp"
-        android:hint="@string/save"
+        android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.899" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

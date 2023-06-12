@@ -4,11 +4,11 @@
     <string name="emailtext">email</string>
     <string name="passwordtext">Κωδικός</string>
     <string name="name">Όνομα</string>
-    <string name="sign_up">Εγγραφή</string>
+    <string name="sign_up">Εγγραφη</string>
     <string name="email">Email</string>
     <string name="password">Κωδικός</string>
     <string name="password_verification">Επαλήθευση Κωδικού</string>
-    <string name="click_to_log_in">Έχετε ήδη λογαριασμό; Συνδεθείτε!</string>
+    <string name="click_to_log_in">Έχετε ήδη λογαριασμό;  Συνδεθείτε!</string>
     <string name="title_activity_home">Home</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -20,7 +20,14 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="save">Αποθήκευση</string>
+    <string name="save">Αποθηκευση</string>
     <string name="log_in">Σύνδεση</string>
     <string name="loginbutton">Είσοδος</string>
+    <string name="contact_number">Τηλέφωνο επικοινωνίας</string>
+    <string name="city">Πόλη/Περιοχή</string>
+    <string name="species">Είδος ζώου</string>
+    <string name="age">Ηλικία ζώου</string>
+    <string name="animal_name">Όνομα ζώου</string>
+    <string name="add_post">Δημιουργια</string>
+    <string name="description">Περιγραφή</string>
 </resources>

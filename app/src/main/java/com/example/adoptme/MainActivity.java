@@ -9,8 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentMain);
 
             }else if(menuItem.getItemId() == R.id.my_profile){
-                Intent intentDonation = new Intent(MainActivity.this, AddPostActivity.class); //change into MyProfile !!!!!!!!
+                Intent intentDonation = new Intent(MainActivity.this, MyProfileActivity.class); //change into MyProfile !!!!!!!!
                 startActivity(intentDonation);
             }
             return false;

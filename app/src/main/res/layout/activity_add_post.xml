@@ -15,25 +15,25 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001"
-        app:title="Δημιουργία Αγγελίας" />
+        app:layout_constraintVertical_bias="0.0"
+        app:title="Δημιουργία αγγελίας" />
 
     <EditText
         android:id="@+id/addPostDescription"
         android:layout_width="270dp"
         android:layout_height="82dp"
         android:ems="10"
-        android:hint="Περιγραφή"
+        android:hint="@string/description"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/addPostBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941" />
+        app:layout_constraintVertical_bias="0.941"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/addPostSpecies"
@@ -41,12 +41,13 @@
         android:layout_height="51dp"
         android:layout_marginBottom="28dp"
         android:ems="10"
-        android:hint="Είδος ζώου"
+        android:hint="@string/species"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addPostTown"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/addPostTown"
@@ -54,60 +55,64 @@
         android:layout_height="51dp"
         android:layout_marginBottom="28dp"
         android:ems="10"
-        android:hint="Πόλη/Περιοχή"
+        android:hint="@string/city"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addPostAge"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/addPostPhone"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Τηλέφωνο επικοινωνίας"
+        android:hint="@string/contact_number"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addPostDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915" />
+        app:layout_constraintVertical_bias="0.915"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/addPostAge"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Ηλικία ζώου"
+        android:hint="@string/age"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addPostPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.914" />
+        app:layout_constraintVertical_bias="0.914"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/addPostName"
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:ems="10"
-        android:hint="Όνομα ζώου"
+        android:hint="@string/animal_name"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addPostSpecies"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPostToolbar"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.72"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/addPostBtn"
         android:layout_width="139dp"
         android:layout_height="53dp"
-        android:hint="Δημιουργία"
+        android:text="@string/add_post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
