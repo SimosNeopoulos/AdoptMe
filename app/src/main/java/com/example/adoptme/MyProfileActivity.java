@@ -36,6 +36,8 @@ public class MyProfileActivity extends AppCompatActivity {
 
     private void writeAccountData() {
         ArrayList<String> userData = databaseHelper.getUserById(sessionManager.getSessionId());
+        if (userData == null)
+            return;
         email.setText(userData.get(0));
         password.setText(userData.get(1));
         name.setText(userData.get(2));
@@ -58,6 +60,12 @@ public class MyProfileActivity extends AppCompatActivity {
             return;
         }
 
-        databaseHelper.updateProfile(Integer.toString(sessionManager.getSessionId()), email, password, name);
+        boolean updateSuccessful = databaseHelper.updateProfile(Integer.toString(sessionManager.getSessionId()), email, password, name);
+        if (updateSuccessful) {
+            Toast.makeText(this, "Τα στοιχεία του profile ενημερώθηκαν επιτυχώς", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Παρουσιάστηκε κάποιο πρόβλημα στην ενημέρωση των στοιχείων", Toast.LENGTH_SHORT).show();
+            this.passwordVerification.setText("");
+        }
     }
 }

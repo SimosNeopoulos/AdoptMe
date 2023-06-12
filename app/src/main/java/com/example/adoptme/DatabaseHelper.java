@@ -53,13 +53,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public void updateProfile(String id, String email, String password, String name) {
+    public boolean updateProfile(String id, String email, String password, String name) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", email);
         contentValues.put("password", password);
         contentValues.put("name", name);
-        MyDatabase.update("users", contentValues, "id = ?", new String[]{id});
+        int rowsAffected = MyDatabase.update("users", contentValues, "id = ?", new String[]{id});
+        return rowsAffected > 0;
     }
 
     public boolean insertPost(String town, String species, String petName, int age, String phoneNumber,
@@ -141,13 +142,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cursor;
         SQLiteDatabase myDatabase = this.getWritableDatabase();
         cursor = myDatabase.rawQuery("Select * from users where id = ?", new String[]{Integer.toString(id)});
-        if (!cursor.moveToFirst())
-            return null;
 
-        userData.add(cursor.getString(1));
-        userData.add(cursor.getString(2));
-        userData.add(cursor.getString(3));
-        return userData;
+        if (cursor.moveToFirst()) {
+            userData.add(cursor.getString(1));
+            userData.add(cursor.getString(2));
+            userData.add(cursor.getString(3));
+            return userData;
+        }
+        return null;
     }
 
     private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age, int userId) {
@@ -211,10 +213,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ? and password = ?", new String[]{email, password});
         if (cursor.getCount() > 0) {
             if (cursor.moveToFirst()) {
-                email = cursor.getString(0);
-                password = cursor.getString(1);
-                String name = cursor.getString(2);
-                return new User(name, email, password);
+                String id = cursor.getString(0);
+                email = cursor.getString(1);
+                password = cursor.getString(2);
+                String name = cursor.getString(3);
+                return new User(Integer.parseInt(id), name, email, password);
             }
         }
         return null;
