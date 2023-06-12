@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentMain);
 
             }else if(menuItem.getItemId() == R.id.my_profile){
-                Intent intentDonation = new Intent(MainActivity.this, MyProfileActivity.class); //change into MyProfile !!!!!!!!
+                Intent intentDonation = new Intent(MainActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
             }
             return false;
