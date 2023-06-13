@@ -19,8 +19,7 @@ public class SessionManager {
     }
 
     public int getSessionId() {
-        int sessionId = sharedPreferences.getInt(SESSION_KEY, -1);
-        return sessionId;
+        return sharedPreferences.getInt(SESSION_KEY, -1);
     }
 
     public void deleteSession() {
