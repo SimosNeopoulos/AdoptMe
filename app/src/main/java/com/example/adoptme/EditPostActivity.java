@@ -26,6 +26,7 @@ public class EditPostActivity extends AppCompatActivity {
     ActionBarDrawerToggle actionBarDrawerToggle;
     //private SessionManager sessionManager;
     DatabaseHelper databaseHelper;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,7 @@ public class EditPostActivity extends AppCompatActivity {
                 Intent intentDonation = new Intent(EditPostActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
             }else if(menuItem.getItemId() == R.id.logout){
+                sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(EditPostActivity.this, LoginActivity.class);
                 startActivity(intentDonation);

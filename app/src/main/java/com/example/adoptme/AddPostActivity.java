@@ -48,6 +48,7 @@ public class AddPostActivity extends AppCompatActivity {
                 Intent intentDonation = new Intent(AddPostActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
             }else if(menuItem.getItemId() == R.id.logout){
+                sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(AddPostActivity.this, LoginActivity.class);
                 startActivity(intentDonation);

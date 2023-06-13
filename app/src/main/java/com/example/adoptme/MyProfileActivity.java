@@ -53,6 +53,7 @@ public class MyProfileActivity extends AppCompatActivity {
                 Intent intentDonation = new Intent(MyProfileActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
             }else if(menuItem.getItemId() == R.id.logout){
+                sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(MyProfileActivity.this, LoginActivity.class);
                 startActivity(intentDonation);
