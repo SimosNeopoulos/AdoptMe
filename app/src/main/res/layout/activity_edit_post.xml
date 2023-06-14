@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="com.example.adoptme.EditPostActivity"
     tools:ignore="HardcodedText">
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditPostActivity">
@@ -72,78 +72,78 @@
         app:layout_constraintVertical_bias="0.9"
         android:autofillHints="" />
 
-    <EditText
-        android:id="@+id/editPostPhone"
-        android:layout_width="270dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:hint="@string/contact_number"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editPostDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editPostToolbar"
-        app:layout_constraintVertical_bias="0.925"
-        android:autofillHints="" />
+<EditText
+android:id="@+id/editPostPhone"
+android:layout_width="270dp"
+android:layout_height="51dp"
+android:ems="10"
+android:hint="@string/contact_number"
+android:inputType="text"
+app:layout_constraintBottom_toTopOf="@+id/editPostDescription"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.496"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="@+id/editPostToolbar"
+app:layout_constraintVertical_bias="0.925"
+android:autofillHints="" />
 
-    <EditText
-        android:id="@+id/editPostAge"
-        android:layout_width="270dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:hint="@string/age"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editPostPhone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editPostToolbar"
-        app:layout_constraintVertical_bias="0.918"
-        android:autofillHints="" />
+<EditText
+android:id="@+id/editPostAge"
+android:layout_width="270dp"
+android:layout_height="51dp"
+android:ems="10"
+android:hint="@string/age"
+android:inputType="text"
+app:layout_constraintBottom_toTopOf="@+id/editPostPhone"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.496"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="@+id/editPostToolbar"
+app:layout_constraintVertical_bias="0.918"
+android:autofillHints="" />
 
-    <EditText
-        android:id="@+id/editPostName"
-        android:layout_width="270dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:hint="@string/animal_name"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/editPostSpecies"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786"
-        android:autofillHints="" />
+<EditText
+android:id="@+id/editPostName"
+android:layout_width="270dp"
+android:layout_height="51dp"
+android:ems="10"
+android:hint="@string/animal_name"
+android:inputType="text"
+app:layout_constraintBottom_toTopOf="@+id/editPostSpecies"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.496"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintVertical_bias="0.786"
+android:autofillHints="" />
 
-    <Button
-        android:id="@+id/editPostBtn"
-        android:layout_width="188dp"
-        android:layout_height="55dp"
-        android:text="@string/save"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.899" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+<Button
+android:id="@+id/editPostBtn"
+android:layout_width="188dp"
+android:layout_height="55dp"
+android:text="@string/save"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.497"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintVertical_bias="0.899" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigation_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/white"
-        app:headerLayout="@layout/header"
-        app:itemTextColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:menu="@menu/drawer_menu" />
+<com.google.android.material.navigation.NavigationView
+android:id="@+id/navigation_menu"
+android:layout_width="wrap_content"
+android:layout_height="match_parent"
+android:layout_gravity="start"
+android:background="@color/white"
+app:headerLayout="@layout/header"
+app:itemTextColor="@color/black"
+app:layout_constraintBottom_toBottomOf="parent"
+app:layout_constraintEnd_toEndOf="parent"
+app:layout_constraintHorizontal_bias="0.0"
+app:layout_constraintStart_toStartOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintVertical_bias="0.0"
+app:menu="@menu/drawer_menu" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
