@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -55,7 +56,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
+    public void redirectToAddPost(View view) {
+        Intent intent = new Intent(getApplicationContext(), AddPostActivity.class);
+        startActivity(intent);
+        finish();
+    }
     public void setUpToolbar() {
         drawerLayout = findViewById(R.id.my_drawer_layout);
         Toolbar toolbar = findViewById(R.id.toolbar);

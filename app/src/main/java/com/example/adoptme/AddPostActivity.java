@@ -76,7 +76,7 @@ public class AddPostActivity extends AppCompatActivity {
         description = this.description.getText().toString();
         telephone = this.telephone.getText().toString();
         town = this.town.getText().toString();
-        //TODO: Να βάλω να ελενχει αν όλα έχουν συπμληρωθει.
+        //TODO: Να βάλω να ελεγχει αν όλα έχουν συπμληρωθει.
 
         databaseHelper.insertPost(town, species, name, Integer.parseInt(age), telephone,
                 "image_path", sessionManager.getSessionId(), description);
