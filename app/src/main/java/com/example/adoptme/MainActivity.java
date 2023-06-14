@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sessionManager = new SessionManager(this);
         if (sessionManager.getSessionId() == -1) {
-            //TODO: Να κάνω έδω να διαβάζει απο το αρχείο του log in
             redirectToSignUp();
         }
 

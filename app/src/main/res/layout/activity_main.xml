@@ -32,13 +32,14 @@
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="177dp"
-        android:layout_height="34dp"
+        android:layout_height="48dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <SearchView
         android:id="@+id/searchView"
@@ -70,6 +71,7 @@
         android:background="@color/white"
         android:onClick="redirectToAddPost"
         android:text="+"
+        android:textColor="#039BE5"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,14 +80,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
-    <ListView
-        android:layout_width="416dp"
-        android:layout_height="503dp"
-        android:layout_marginBottom="4dp"
+    <ScrollView
+        android:layout_width="414dp"
+        android:layout_height="495dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
