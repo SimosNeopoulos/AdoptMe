@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -77,12 +79,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("img_path", imagePath);
         long post_id = MyDatabase.insert("posts", null, contentValues);
         return post_id != -1;
-//        if (post_id != -1) {
-////            insertImagePaths(imagePath, post_id);
-//            return true;
-//        }
-//        return false;
     }
+
+//    private byte[] getImageForInsert(String imagePath) {
+//        try (FileInputStream fs = new FileInputStream(imagePath)) {
+//            byte[] imgByte = new byte[fs.available()];
+//            fs.read(imgByte);
+//            return imgByte;
+//        } catch (IOException exception) {
+//            return null;
+//        }
+//    }
 
     public void updatePost(int postId, String town, String species, String petName, int age, String phoneNumber,
                               String post_discription) {
@@ -130,8 +137,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String phoneNumber = cursor.getString(5);
                 int postUserId = cursor.getInt(6);
                 String postDescription = cursor.getString(7);
-                ArrayList<String> imagePaths = getImagePaths(id);
-                posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber, imagePaths));
+                String imagePath = cursor.getString(8);
+                posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber, imagePath));
             } while (cursor.moveToNext());
         }
         return posts;
@@ -195,18 +202,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (cursor.getCount() > 0) ? cursor : null;
     }
 
-    private ArrayList<String> getImagePaths(int postId) {
-        ArrayList<String> images = new ArrayList<>();
-        SQLiteDatabase myDatabase = this.getWritableDatabase();
-        @SuppressLint("Recycle") Cursor cursor = myDatabase.rawQuery("Select path from image_path where post_id = ?", new String[]{Integer.toString(postId)});
-        if (cursor.getCount() < 1)
-            return images;
-        do {
-            images.add(cursor.getString(2));
-        } while (cursor.moveToNext());
-
-        return images;
-    }
+//    private ArrayList<String> getImagePaths(int postId) {
+//        ArrayList<String> images = new ArrayList<>();
+//        SQLiteDatabase myDatabase = this.getWritableDatabase();
+//        @SuppressLint("Recycle") Cursor cursor = myDatabase.rawQuery("Select path from image_path where post_id = ?", new String[]{Integer.toString(postId)});
+//        if (cursor.getCount() < 1)
+//            return images;
+//        do {
+//            images.add(cursor.getString(2));
+//        } while (cursor.moveToNext());
+//
+//        return images;
+//    }
 
     public User checkEmailPassword(String email, String password) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
