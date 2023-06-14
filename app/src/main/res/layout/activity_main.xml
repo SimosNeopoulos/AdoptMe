@@ -29,25 +29,13 @@
         app:title="Αρχική"
         app:titleTextColor="@color/white" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="177dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginBottom="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/searchView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/switch1"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        tools:ignore="DuplicateSpeakableTextCheck" />
-
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="290dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="215dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.396"
+        app:layout_constraintHorizontal_bias="0.918"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -55,7 +43,7 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:minHeight="48dp"
         android:text="Οι αγγελίες μου"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,7 +76,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.272">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -96,6 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp" />
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

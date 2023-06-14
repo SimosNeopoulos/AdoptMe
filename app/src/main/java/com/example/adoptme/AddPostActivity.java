@@ -44,7 +44,6 @@ public class AddPostActivity extends AppCompatActivity {
         telephone = findViewById(R.id.addPostPhone);
         town = findViewById(R.id.addPostTown);
         createPostBtn = findViewById(R.id.addPostBtn);
-        imageBtn = findViewById(R.id.imgBtn);
         imageBtn.setOnClickListener(this::pickImage);
         createPostBtn.setOnClickListener(this::addPost);
         setUpToolbar();

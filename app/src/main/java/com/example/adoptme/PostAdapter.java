@@ -36,7 +36,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         holder.town.setText(post.getTownName());
         holder.posterName.setText(post.getPetName());
         holder.age.setText(post.getAge());
-        holder.image.setImageBitmap(BitmapFactory.decodeFile(post.getImagePath()));
     }
 
     @Override
@@ -46,14 +45,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
     public class PostHolder extends RecyclerView.ViewHolder {
         EditText town, species, posterName, age;
-        ImageView image;
         public PostHolder(@NonNull View itemView) {
             super(itemView);
             town = itemView.findViewById(R.id.city);
             species = itemView.findViewById(R.id.species);
             posterName = itemView.findViewById(R.id.poster_name);
-            age = itemView.findViewById(R.id.age);
-            image = itemView.findViewById(R.id.imageView);
+            age = itemView.findViewById(R.id.animal_age);
         }
     }
 }
