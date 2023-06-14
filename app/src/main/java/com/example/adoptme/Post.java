@@ -11,10 +11,10 @@ public class Post {
     private int userId;
     private String postDescription;
     private String phoneNumber;
-    private ArrayList<String> imagePaths;
+    private String image;
 
     public Post(int postId, String townName, String species, String petName, int age, int userId,
-                String postDescription, String phoneNumber, ArrayList<String> imagePaths) {
+                String postDescription, String phoneNumber, String image) {
         this.postId = postId;
         this.townName = townName;
         this.species = species;
@@ -23,11 +23,11 @@ public class Post {
         this.userId = userId;
         this.postDescription = postDescription;
         this.phoneNumber = phoneNumber;
-        this.imagePaths = imagePaths;
+        this.image = image;
     }
 
-    public void setImagePaths(ArrayList<String> imagePaths) {
-        this.imagePaths = imagePaths;
+    public void setImagePaths(String image) {
+        this.image = image;
     }
 
     public int getPostId() {
@@ -62,7 +62,7 @@ public class Post {
         return phoneNumber;
     }
 
-    public ArrayList<String> getImagePaths() {
-        return imagePaths;
+    public String getImagePaths() {
+        return image;
     }
 }
