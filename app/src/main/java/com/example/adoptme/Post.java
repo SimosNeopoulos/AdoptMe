@@ -1,7 +1,5 @@
 package com.example.adoptme;
 
-import java.util.ArrayList;
-
 public class Post {
     private int postId;
     private String townName;
@@ -62,7 +60,7 @@ public class Post {
         return phoneNumber;
     }
 
-    public String getImagePaths() {
+    public String getImagePath() {
         return image;
     }
 }

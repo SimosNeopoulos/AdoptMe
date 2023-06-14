@@ -5,6 +5,8 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.content.Intent;
@@ -14,12 +16,18 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
     SessionManager sessionManager;
+    DatabaseHelper databaseHelper;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    ArrayList<Post> posts;
+    PostAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setUpToolbar();
+        databaseHelper = new DatabaseHelper(this);
         navigationView = findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(menuItem -> {
             if(menuItem.getItemId() == R.id.mainpage){
@@ -48,6 +57,16 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        recyclerView = findViewById(R.id.recyclerview);
+        posts = new ArrayList<>();
+        adapter = new PostAdapter(this, posts);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        displayData();
+    }
+
+    private void displayData() {
+        posts = databaseHelper.getPosts(null, null, null, 0, 0);
     }
 
     private void redirectToSignUp() {

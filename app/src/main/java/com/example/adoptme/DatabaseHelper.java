@@ -121,7 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    private ArrayList<Post> getPosts(String queryParameters, String townName, String species, int age, int userId) {
+    public ArrayList<Post> getPosts(String queryParameters, String townName, String species, int age, int userId) {
         ArrayList<Post> posts = new ArrayList<>();
         Cursor cursor = getPostsFromDatabase(queryParameters, townName, species, age, userId);
         if (cursor == null)
@@ -196,7 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         "userId = ?", new String[]{Integer.toString(userId)});
 
             default:
-                throw new IllegalStateException("Unexpected value: " + queryParameters);
+                cursor = myDatabase.rawQuery("Select * from posts ", new String[]{Integer.toString(age)});
         }
 
         return (cursor.getCount() > 0) ? cursor : null;
