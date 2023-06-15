@@ -31,25 +31,27 @@
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="215dp"
+        android:layout_width="372dp"
         android:layout_height="53dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="372dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="20dp"
         android:minHeight="48dp"
-        android:text="Οι αγγελίες μου"
+        android:text="  Οι αγγελίες μου"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
@@ -59,7 +61,7 @@
         android:background="@color/white"
         android:onClick="redirectToAddPost"
         android:text="+"
-        android:textColor="#039BE5"
+        android:textColor="@color/white"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,14 +71,14 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <ScrollView
-        android:layout_width="414dp"
-        android:layout_height="495dp"
+        android:layout_width="372dp"
+        android:layout_height="475dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        app:layout_constraintVertical_bias="0.272">
+        app:layout_constraintVertical_bias="0.555">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
