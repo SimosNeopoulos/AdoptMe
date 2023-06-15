@@ -20,11 +20,13 @@ public class SignUpActivity extends AppCompatActivity {
 
     TextView goToLogIn;
     private DatabaseHelper databaseHelper;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        sessionManager = new SessionManager(this);
         name = findViewById(R.id.signUpName);
         email = findViewById(R.id.signUpEmail);
         password = findViewById(R.id.signUpPassword);
@@ -45,8 +47,9 @@ public class SignUpActivity extends AppCompatActivity {
                 if (passwordStr.equals(passwordVerStr)) {
                     Boolean checkUserEmail = databaseHelper.checkEmail(emailStr);
                     if (!checkUserEmail) {
-                        Boolean insert = databaseHelper.createProfile(emailStr, passwordStr,nameStr);
-                        if (insert) {
+                        int insertId = databaseHelper.createProfile(emailStr, passwordStr,nameStr);
+                        if (insertId != -1) {
+                            sessionManager.saveSession(new User(insertId, nameStr, emailStr, passwordStr));
                             Toast.makeText(SignUpActivity.this, "Signup Successfully!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);

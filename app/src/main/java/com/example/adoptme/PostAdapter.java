@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,7 +45,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     }
 
     public class PostHolder extends RecyclerView.ViewHolder {
-        EditText town, species, posterName, age;
+        TextView town, species, posterName, age;
         public PostHolder(@NonNull View itemView) {
             super(itemView);
             town = itemView.findViewById(R.id.city);
@@ -53,19 +54,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             age = itemView.findViewById(R.id.animal_age);
         }
 
-        public EditText getTown() {
+        public TextView getTown() {
             return town;
         }
 
-        public EditText getSpecies() {
+        public TextView getSpecies() {
             return species;
         }
 
-        public EditText getPosterName() {
+        public TextView getPosterName() {
             return posterName;
         }
 
-        public EditText getAge() {
+        public TextView getAge() {
             return age;
         }
     }

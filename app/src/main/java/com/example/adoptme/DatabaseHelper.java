@@ -45,14 +45,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
     }
 
-    public Boolean createProfile(String email, String password, String name) {
+    public int createProfile(String email, String password, String name) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", email);
         contentValues.put("password", password);
         contentValues.put("name", name);
         long result = MyDatabase.insert("users", null, contentValues);
-        return result != -1;
+        return Integer.parseInt(String.valueOf(result));
     }
 
     public boolean updateProfile(String id, String email, String password, String name) {
