@@ -24,7 +24,6 @@ public class EditPostActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    //private SessionManager sessionManager;
     DatabaseHelper databaseHelper;
     SessionManager sessionManager;
 
@@ -32,7 +31,7 @@ public class EditPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_post);
-//        sessionManager = new SessionManager(this);
+        sessionManager = new SessionManager(this);
         databaseHelper = new DatabaseHelper(this);
         name = findViewById(R.id.editPostName);
         age = findViewById(R.id.editPostAge);
@@ -80,7 +79,7 @@ public class EditPostActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState( );
     }
     private void setTextFields(Intent intent) {
-        ArrayList<String> data = intent.getStringArrayListExtra("postData");
+        ArrayList<String> data = intent.getStringArrayListExtra("edit");
         if (data == null)
             return;
 

@@ -100,9 +100,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cursor.getCount() > 0;
     }
 
-    public ArrayList<Post> getPosts(String queryParameters, String townName, String species, int age, int userId) {
+    public ArrayList<Post> getPosts(String queryParameters, String townName, String species, int postId, int userId) {
         ArrayList<Post> posts = new ArrayList<>();
-        Cursor cursor = getPostsFromDatabase(queryParameters, townName, species, age, userId);
+        Cursor cursor = getPostsFromDatabase(queryParameters, townName, species, postId, userId);
         if (cursor == null)
             return null;
 
@@ -112,11 +112,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String town = cursor.getString(1);
                 String postSpecies = cursor.getString(2);
                 String petName = cursor.getString(3);
-                int postAge = cursor.getInt(4);
+                int postId2 = cursor.getInt(4);
                 String phoneNumber = cursor.getString(5);
                 int postUserId = cursor.getInt(6);
                 String postDescription = cursor.getString(7);
-                posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber));
+                posts.add(new Post(id, town, postSpecies, petName, postId2, postUserId, postDescription, phoneNumber));
             } while (cursor.moveToNext());
         }
         return posts;
@@ -137,7 +137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age, int userId) {
+    private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int postId, int userId) {
         @SuppressLint("Recycle") Cursor cursor = null;
         SQLiteDatabase myDatabase = this.getWritableDatabase();
         if (queryParameters == null) {
@@ -145,6 +145,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } else if (queryParameters.equals("uid")) {
             cursor = myDatabase.rawQuery("Select * from posts where " +
                     "userId = ?", new String[]{Integer.toString(userId)});
+        } else if (queryParameters.equals("pid")) {
+            cursor = myDatabase.rawQuery("Select * from posts where " +
+                    "id = ?", new String[]{Integer.toString(postId)});
         }
         return (cursor.getCount() > 0) ? cursor : null;
     }

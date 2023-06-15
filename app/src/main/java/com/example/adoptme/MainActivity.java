@@ -75,9 +75,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Post selectedPost = (Post) postListView.getItemAtPosition(position);
-                //TODO: Nα αλλαξω το EditPostActivity στην κλάση που θα έχουμε για να φαίνεται το post
-                Intent editNoteIntent = new Intent(getApplicationContext(), EditPostActivity.class);
-                editNoteIntent.putExtra("inspect", selectedPost.getPostId());
+                int postId = selectedPost.getPostId();
+                if (postId == sessionManager.getSessionId()) {
+                    editPost(selectedPost);
+                    return;
+                }
+                Intent editNoteIntent = new Intent(getApplicationContext(), ViewPostActivity.class);
+                editNoteIntent.putExtra("inspect", selectedPost.toStringArraylist());
                 startActivity(editNoteIntent);
             }
         });
@@ -95,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void editPost(Post post) {
+        Intent editNoteIntent = new Intent(getApplicationContext(), EditPostActivity.class);
+        editNoteIntent.putExtra("edit", post.toStringArraylist());
+        startActivity(editNoteIntent);
     }
 
     private void setSwitchValue() {

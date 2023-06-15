@@ -6,9 +6,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class ViewPostActivity extends AppCompatActivity {
     SessionManager sessionManager;
@@ -17,6 +21,9 @@ public class ViewPostActivity extends AppCompatActivity {
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
+
+    TextView userName, petName, species, region, petAge, phoneNumber, description;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,14 +32,14 @@ public class ViewPostActivity extends AppCompatActivity {
         setUpToolbar();
         navigationView = findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(menuItem -> {
-            if(menuItem.getItemId() == R.id.mainpage){
+            if (menuItem.getItemId() == R.id.mainpage) {
                 Intent intentMain = new Intent(ViewPostActivity.this, MainActivity.class);
                 startActivity(intentMain);
 
-            }else if(menuItem.getItemId() == R.id.my_profile){
+            } else if (menuItem.getItemId() == R.id.my_profile) {
                 Intent intentDonation = new Intent(ViewPostActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
-            }else if(menuItem.getItemId() == R.id.logout){
+            } else if (menuItem.getItemId() == R.id.logout) {
                 sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(ViewPostActivity.this, LoginActivity.class);
@@ -41,6 +48,40 @@ public class ViewPostActivity extends AppCompatActivity {
             return false;
         });
 
+        initialiseTextViews();
+        setTextViews(getIntent());
+
+    }
+
+    private void initialiseTextViews() {
+        userName = findViewById(R.id.viewPosterName);
+        petName = findViewById(R.id.viewPostName);
+        species = findViewById(R.id.viewPostSpecies);
+        region = findViewById(R.id.viewPostTown);
+        petAge = findViewById(R.id.viewPostAge);
+        phoneNumber = findViewById(R.id.viewPostPhone);
+        description = findViewById(R.id.viewPostDescription);
+    }
+
+    private void setTextViews(Intent intent) {
+        if (intent == null) {
+            return;
+        }
+
+        ArrayList<String> data = intent.getStringArrayListExtra("inspect");
+        if (data == null)
+            return;
+
+        int userId = Integer.parseInt(data.get(7));
+        ArrayList<String> userData = databaseHelper.getUserById(userId);
+
+        userName.setText((userData == null) ? "" : userData.get(2));
+        petAge.setText(data.get(1));
+        petAge.setText(data.get(2));
+        species.setText(data.get(3));
+        description.setText(data.get(4));
+        phoneNumber.setText(data.get(5));
+        region.setText(data.get(6));
     }
 
     public void setUpToolbar() {
@@ -49,7 +90,7 @@ public class ViewPostActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState( );
+        actionBarDrawerToggle.syncState();
     }
 
 }

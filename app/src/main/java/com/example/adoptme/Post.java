@@ -1,5 +1,7 @@
 package com.example.adoptme;
 
+import java.util.ArrayList;
+
 public class Post {
     private int postId;
     private String townName;
@@ -53,6 +55,19 @@ public class Post {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public ArrayList<String> toStringArraylist() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(Integer.toString(postId));
+        arrayList.add(petName);
+        arrayList.add(Integer.toString(age));
+        arrayList.add(species);
+        arrayList.add(postDescription);
+        arrayList.add(phoneNumber);
+        arrayList.add(townName);
+        arrayList.add(Integer.toString(userId));
+        return arrayList;
     }
 
 }
