@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    ListView postListView;
     SessionManager sessionManager;
     DatabaseHelper databaseHelper;
     NavigationView navigationView;
@@ -57,11 +58,10 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-//        recyclerView = findViewById(R.id.recyclerview);
-//        posts = databaseHelper.getPosts(null,null,null, 0,0);
-//        adapter = new PostAdapter(this, posts);
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        postListView = findViewById(R.id.postListView);
+        posts = databaseHelper.getPosts(null,null,null, 0,0);
+        adapter = new PostAdapter(getApplicationContext(), posts);
+        postListView.setAdapter(adapter);
 
     }
 

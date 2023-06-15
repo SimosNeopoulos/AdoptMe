@@ -60,7 +60,7 @@
 
 
     <ListView
-        android:id="@+id/noteListView"
+        android:id="@+id/postListView"
         android:layout_width="411dp"
         android:layout_height="538dp"
         android:dividerHeight="3dp"
