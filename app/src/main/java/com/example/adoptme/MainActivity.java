@@ -57,11 +57,11 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
-        recyclerView = findViewById(R.id.recyclerview);
-        posts = databaseHelper.getPosts(null,null,null, 0,0);
-        adapter = new PostAdapter(MainActivity.this, this, posts);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+//        recyclerView = findViewById(R.id.recyclerview);
+//        posts = databaseHelper.getPosts(null,null,null, 0,0);
+//        adapter = new PostAdapter(this, posts);
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
     }
 

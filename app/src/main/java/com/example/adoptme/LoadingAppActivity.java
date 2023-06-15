@@ -17,8 +17,8 @@ public class LoadingAppActivity extends AppCompatActivity {
 
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            startActivity(new Intent(LoadingAppActivity.this, SignUpActivity.class));
+            startActivity(new Intent(LoadingAppActivity.this, MainActivity.class));
             finish();
-        }, 4000); //δευτερόλεπτα φόρτωσης
+        }, 3000); //δευτερόλεπτα φόρτωσης
     }
 }

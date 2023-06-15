@@ -1,16 +1,12 @@
 package com.example.adoptme;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,7 +19,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     private Context context;
     private ArrayList<Post> posts;
 
-    public PostAdapter(Activity activity, Context context, ArrayList<Post> posts) {
+    public PostAdapter(Context context, ArrayList<Post> posts) {
         this.context = context;
         this.posts = posts;
     }
@@ -50,14 +46,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
     public class PostHolder extends RecyclerView.ViewHolder {
         TextView town, species, posterName, age;
-        LinearLayout mainLayout;
         public PostHolder(@NonNull View itemView) {
             super(itemView);
             town = itemView.findViewById(R.id.city);
             species = itemView.findViewById(R.id.species);
             posterName = itemView.findViewById(R.id.poster_name);
             age = itemView.findViewById(R.id.animal_age);
-            mainLayout = itemView.findViewById(R.id.mainLayout);
         }
 
         public TextView getTown() {
@@ -66,10 +60,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
         public TextView getSpecies() {
             return species;
-        }
-
-        public LinearLayout getMainLayout() {
-            return mainLayout;
         }
 
         public TextView getPosterName() {
