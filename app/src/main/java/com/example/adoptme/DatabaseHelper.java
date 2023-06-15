@@ -88,6 +88,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDatabase.update("posts", contentValues, "id = ?", whereArgs);
     }
 
+    public boolean deletePost(int postId) {
+        SQLiteDatabase myDatabase = this.getWritableDatabase();
+        int deletedRows = myDatabase.delete("posts", "id = ?", new String[]{String.valueOf(postId)});
+        return deletedRows > 0;
+    }
+
     public Boolean checkEmail(String email) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ?", new String[]{email});
@@ -132,61 +138,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age, int userId) {
-        @SuppressLint("Recycle") Cursor cursor;
+        @SuppressLint("Recycle") Cursor cursor = null;
         SQLiteDatabase myDatabase = this.getWritableDatabase();
-//        switch (queryParameters) {
-//            case "t":
-//                cursor = myDatabase.rawQuery("Select * from posts where town = ?", new String[]{townName});
-//                break;
-//
-//            case "ts":
-//                cursor = myDatabase.rawQuery("Select * from posts where town = ? and" +
-//                        " species = ?", new String[]{townName, species});
-//                break;
-//
-//            case "tsa":
-//                cursor = myDatabase.rawQuery("Select * from posts where town = ? and" +
-//                        " species = ? and age = ?", new String[]{townName, species, Integer.toString(age)});
-//                break;
-//
-//            case "sa":
-//                cursor = myDatabase.rawQuery("Select * from posts where" +
-//                        " species = ? and age = ?", new String[]{species, Integer.toString(age)});
-//                break;
-//
-//            case "s":
-//                cursor = myDatabase.rawQuery("Select * from posts where species = ?", new String[]{species});
-//                break;
-//
-//            case "a":
-//                cursor = myDatabase.rawQuery("Select * from posts where " +
-//                        "age = ?", new String[]{Integer.toString(age)});
-//                break;
-//
-//            case "uid":
-//                cursor = myDatabase.rawQuery("Select * from posts where " +
-//                        "userId = ?", new String[]{Integer.toString(userId)});
-//                break;
-//
-//            default:
-                cursor = myDatabase.rawQuery("Select * from posts ", null);
-//        }
-
+        if (queryParameters == null) {
+            cursor = myDatabase.rawQuery("Select * from posts ", null);
+        } else if (queryParameters.equals("uid")) {
+            cursor = myDatabase.rawQuery("Select * from posts where " +
+                    "userId = ?", new String[]{Integer.toString(userId)});
+        }
         return (cursor.getCount() > 0) ? cursor : null;
     }
-
-//    private ArrayList<String> getImagePaths(int postId) {
-//        ArrayList<String> images = new ArrayList<>();
-//        SQLiteDatabase myDatabase = this.getWritableDatabase();
-//        @SuppressLint("Recycle") Cursor cursor = myDatabase.rawQuery("Select path from image_path where post_id = ?", new String[]{Integer.toString(postId)});
-//        if (cursor.getCount() < 1)
-//            return images;
-//        do {
-//            images.add(cursor.getString(2));
-//        } while (cursor.moveToNext());
-//
-//        return images;
-//    }
 
     public User checkEmailPassword(String email, String password) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
