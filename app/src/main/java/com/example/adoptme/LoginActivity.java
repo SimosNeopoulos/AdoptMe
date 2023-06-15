@@ -58,6 +58,5 @@ public class LoginActivity extends AppCompatActivity {
         }
         sessionManager.saveSession(user);
         goToMainPage();
-
     }
 }
