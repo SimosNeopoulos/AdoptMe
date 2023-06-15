@@ -22,7 +22,7 @@ public class ViewPostActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
 
-    TextView userName, petName, species, region, petAge, phoneNumber, description;
+    TextView petName, species, region, petAge, phoneNumber, description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,6 @@ public class ViewPostActivity extends AppCompatActivity {
     }
 
     private void initialiseTextViews() {
-        userName = findViewById(R.id.viewPosterName);
         petName = findViewById(R.id.viewPostName);
         species = findViewById(R.id.viewPostSpecies);
         region = findViewById(R.id.viewPostTown);
@@ -72,11 +71,7 @@ public class ViewPostActivity extends AppCompatActivity {
         if (data == null)
             return;
 
-        int userId = Integer.parseInt(data.get(7));
-        ArrayList<String> userData = databaseHelper.getUserById(userId);
-
-        userName.setText((userData == null) ? "" : userData.get(2));
-        petAge.setText(data.get(1));
+        petName.setText(data.get(1));
         petAge.setText(data.get(2));
         species.setText(data.get(3));
         description.setText(data.get(4));

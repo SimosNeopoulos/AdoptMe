@@ -92,9 +92,19 @@ public class AddPostActivity extends AppCompatActivity {
         boolean postInserted = databaseHelper.insertPost(town, species, name, Integer.parseInt(age), telephone,
                 sessionManager.getSessionId(), description);
         if (postInserted) {
+            clearFields();
             Toast.makeText(this, "Το post ανέβηκε επιτυχώς", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Παρουσιάστικε πρόβλημα", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void clearFields() {
+        name.setText("");
+        age.setText("");
+        species.setText("");
+        description.setText("");
+        telephone.setText("");
+        town.setText("");
     }
 }
