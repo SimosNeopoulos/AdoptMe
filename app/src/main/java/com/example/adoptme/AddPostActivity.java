@@ -26,8 +26,6 @@ public class AddPostActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     DatabaseHelper databaseHelper;
-    Button imageBtn;
-    String imagePath;
 
     private static final int PICK_IMAGE = 100;
 
@@ -44,7 +42,6 @@ public class AddPostActivity extends AppCompatActivity {
         telephone = findViewById(R.id.addPostPhone);
         town = findViewById(R.id.addPostTown);
         createPostBtn = findViewById(R.id.addPostBtn);
-        imageBtn.setOnClickListener(this::pickImage);
         createPostBtn.setOnClickListener(this::addPost);
         setUpToolbar();
         navigationView = findViewById(R.id.navigation_menu);
@@ -67,40 +64,6 @@ public class AddPostActivity extends AppCompatActivity {
 
     }
 
-    private void pickImage(View view) {
-        Intent intent = new Intent(Intent.ACTION_PICK, Uri.parse(
-                "content://media/internal/images/media"
-        ));
-        startActivityForResult(intent, PICK_IMAGE);
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-
-        super.onActivityResult(requestCode, resultCode, intent);
-        imagePath = null;
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
-            Uri uri = intent.getData();
-            imagePath = getPath(uri);
-            Toast.makeText(this, imagePath, Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public String getPath(Uri uri) {
-        if (uri == null)
-            return null;
-
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
-        if (cursor != null) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            return cursor.getString(column_index);
-        }
-        return uri.getPath();
-    }
-
     public void setUpToolbar() {
         drawerLayout = findViewById(R.id.my_drawer_layout);
         Toolbar toolbar = findViewById(R.id.addPostToolbar);
@@ -121,13 +84,13 @@ public class AddPostActivity extends AppCompatActivity {
         town = this.town.getText().toString();
         //TODO: Να βάλω να ελεγχει αν όλα έχουν συπμληρωθει.
         if (name.equals("") || age.equals("") || species.equals("") || description.equals("")
-                || telephone.equals("") || town.equals("") || imagePath.equals("")) {
+                || telephone.equals("") || town.equals("")) {
             Toast.makeText(this, "All fields are mandatory", Toast.LENGTH_LONG).show();
             return;
         }
 
         boolean postInserted = databaseHelper.insertPost(town, species, name, Integer.parseInt(age), telephone,
-                imagePath, sessionManager.getSessionId(), description);
+                sessionManager.getSessionId(), description);
         if (postInserted) {
             Toast.makeText(this, "Το post ανέβηκε επιτυχώς", Toast.LENGTH_LONG).show();
         } else {

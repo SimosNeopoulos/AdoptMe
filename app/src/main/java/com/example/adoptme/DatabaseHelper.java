@@ -26,14 +26,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 " email TEXT UNIQUE, password TEXT, name TEXT)");
         MyDatabase.execSQL("CREATE INDEX idx_email ON users(email)");
 
-//        MyDatabase.execSQL("CREATE TABLE image_path (id INTEGER PRIMARY KEY AUTOINCREMENT," +
-//                "post_id INTEGER, path TEXT)");
-//        MyDatabase.execSQL("CREATE INDEX idx_post ON image_path(post_id)");
-
-
         MyDatabase.execSQL("CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT, town TEXT," +
                 "species TEXT, pet_name TEXT, age INTEGER, phone_number TEXT, userId INTEGER," +
-                "post_discription TEXT, img_path TEXT)");
+                "post_discription TEXT)");
         MyDatabase.execSQL("CREATE INDEX idx_town ON posts(town)");
         MyDatabase.execSQL("CREATE INDEX idx_species ON posts(species)");
         MyDatabase.execSQL("CREATE INDEX idx_userId ON posts(userId)");
@@ -66,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertPost(String town, String species, String petName, int age, String phoneNumber,
-                              String imagePath, int userId, String post_discription) {
+                              int userId, String post_discription) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("town", town);
@@ -76,21 +71,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("phone_number", phoneNumber);
         contentValues.put("userId", userId);
         contentValues.put("post_discription", post_discription);
-        contentValues.put("img_path", imagePath);
         long post_id = MyDatabase.insert("posts", null, contentValues);
         return post_id != -1;
     }
-
-//    private byte[] getImageForInsert(String imagePath) {
-//        try (FileInputStream fs = new FileInputStream(imagePath)) {
-//            byte[] imgByte = new byte[fs.available()];
-//            fs.read(imgByte);
-//            return imgByte;
-//        } catch (IOException exception) {
-//            return null;
-//        }
-//    }
-
     public void updatePost(int postId, String town, String species, String petName, int age, String phoneNumber,
                               String post_discription) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
@@ -104,16 +87,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] whereArgs = {String.valueOf(postId)};
         MyDatabase.update("posts", contentValues, "id = ?", whereArgs);
     }
-
-//    private void insertImagePaths(ArrayList<String> image_paths, long postId) {
-//        SQLiteDatabase MyDatabase = this.getWritableDatabase();
-//        for (String image_path : image_paths) {
-//            ContentValues contentValues = new ContentValues();
-//            contentValues.put("path", image_path);
-//            contentValues.put("post_id", postId);
-//            MyDatabase.insert("image_path", null, contentValues);
-//        }
-//    }
 
     public Boolean checkEmail(String email) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
