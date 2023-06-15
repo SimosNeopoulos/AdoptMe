@@ -58,16 +58,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recyclerview);
-        posts = new ArrayList<>();
+        posts = databaseHelper.getPosts(null,null,null, 0,0);
         adapter = new PostAdapter(this, posts);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        displayData();
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-    }
-
-    private void displayData() {
-        posts = databaseHelper.getPosts(null, null, null, 0, 0);
     }
 
     private void redirectToSignUp() {
@@ -86,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState( );
+        actionBarDrawerToggle.syncState();
     }
 }

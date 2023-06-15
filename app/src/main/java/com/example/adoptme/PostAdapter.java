@@ -33,9 +33,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     @Override
     public void onBindViewHolder(@NonNull PostHolder holder, int position) {
         Post post = posts.get(position);
-        holder.town.setText(post.getTownName());
-        holder.posterName.setText(post.getPetName());
-        holder.age.setText(post.getAge());
+        holder.getTown().setText(post.getTownName());
+        holder.getPosterName().setText(post.getPetName());
+        holder.getAge().setText(post.getAge());
     }
 
     @Override
@@ -51,6 +51,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             species = itemView.findViewById(R.id.species);
             posterName = itemView.findViewById(R.id.poster_name);
             age = itemView.findViewById(R.id.animal_age);
+        }
+
+        public EditText getTown() {
+            return town;
+        }
+
+        public EditText getSpecies() {
+            return species;
+        }
+
+        public EditText getPosterName() {
+            return posterName;
+        }
+
+        public EditText getAge() {
+            return age;
         }
     }
 }

@@ -137,8 +137,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String phoneNumber = cursor.getString(5);
                 int postUserId = cursor.getInt(6);
                 String postDescription = cursor.getString(7);
-                String imagePath = cursor.getString(8);
-                posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber, imagePath));
+                posts.add(new Post(id, town, postSpecies, petName, postAge, postUserId, postDescription, phoneNumber));
             } while (cursor.moveToNext());
         }
         return posts;
@@ -162,42 +161,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int age, int userId) {
         @SuppressLint("Recycle") Cursor cursor;
         SQLiteDatabase myDatabase = this.getWritableDatabase();
-        switch (queryParameters) {
-            case "t":
-                cursor = myDatabase.rawQuery("Select * from posts where town = ?", new String[]{townName});
-                break;
-
-            case "ts":
-                cursor = myDatabase.rawQuery("Select * from posts where town = ? and" +
-                        " species = ?", new String[]{townName, species});
-                break;
-
-            case "tsa":
-                cursor = myDatabase.rawQuery("Select * from posts where town = ? and" +
-                        " species = ? and age = ?", new String[]{townName, species, Integer.toString(age)});
-                break;
-
-            case "sa":
-                cursor = myDatabase.rawQuery("Select * from posts where" +
-                        " species = ? and age = ?", new String[]{species, Integer.toString(age)});
-                break;
-
-            case "s":
-                cursor = myDatabase.rawQuery("Select * from posts where species = ?", new String[]{species});
-                break;
-
-            case "a":
-                cursor = myDatabase.rawQuery("Select * from posts where " +
-                        "age = ?", new String[]{Integer.toString(age)});
-                break;
-
-            case "uid":
-                cursor = myDatabase.rawQuery("Select * from posts where " +
-                        "userId = ?", new String[]{Integer.toString(userId)});
-
-            default:
-                cursor = myDatabase.rawQuery("Select * from posts ", new String[]{Integer.toString(age)});
-        }
+//        switch (queryParameters) {
+//            case "t":
+//                cursor = myDatabase.rawQuery("Select * from posts where town = ?", new String[]{townName});
+//                break;
+//
+//            case "ts":
+//                cursor = myDatabase.rawQuery("Select * from posts where town = ? and" +
+//                        " species = ?", new String[]{townName, species});
+//                break;
+//
+//            case "tsa":
+//                cursor = myDatabase.rawQuery("Select * from posts where town = ? and" +
+//                        " species = ? and age = ?", new String[]{townName, species, Integer.toString(age)});
+//                break;
+//
+//            case "sa":
+//                cursor = myDatabase.rawQuery("Select * from posts where" +
+//                        " species = ? and age = ?", new String[]{species, Integer.toString(age)});
+//                break;
+//
+//            case "s":
+//                cursor = myDatabase.rawQuery("Select * from posts where species = ?", new String[]{species});
+//                break;
+//
+//            case "a":
+//                cursor = myDatabase.rawQuery("Select * from posts where " +
+//                        "age = ?", new String[]{Integer.toString(age)});
+//                break;
+//
+//            case "uid":
+//                cursor = myDatabase.rawQuery("Select * from posts where " +
+//                        "userId = ?", new String[]{Integer.toString(userId)});
+//                break;
+//
+//            default:
+                cursor = myDatabase.rawQuery("Select * from posts ", null);
+//        }
 
         return (cursor.getCount() > 0) ? cursor : null;
     }

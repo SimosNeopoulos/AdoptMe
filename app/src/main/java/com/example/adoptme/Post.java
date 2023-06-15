@@ -9,10 +9,9 @@ public class Post {
     private int userId;
     private String postDescription;
     private String phoneNumber;
-    private String image;
 
     public Post(int postId, String townName, String species, String petName, int age, int userId,
-                String postDescription, String phoneNumber, String image) {
+                String postDescription, String phoneNumber) {
         this.postId = postId;
         this.townName = townName;
         this.species = species;
@@ -21,12 +20,8 @@ public class Post {
         this.userId = userId;
         this.postDescription = postDescription;
         this.phoneNumber = phoneNumber;
-        this.image = image;
     }
 
-    public void setImagePaths(String image) {
-        this.image = image;
-    }
 
     public int getPostId() {
         return postId;
@@ -60,7 +55,4 @@ public class Post {
         return phoneNumber;
     }
 
-    public String getImagePath() {
-        return image;
-    }
 }
