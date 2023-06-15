@@ -44,6 +44,7 @@ public class ViewPostActivity extends AppCompatActivity {
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(ViewPostActivity.this, LoginActivity.class);
                 startActivity(intentDonation);
+                finish();
             }
             return false;
         });

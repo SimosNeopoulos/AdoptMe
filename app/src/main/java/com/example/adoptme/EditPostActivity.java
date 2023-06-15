@@ -20,7 +20,7 @@ public class EditPostActivity extends AppCompatActivity {
 
     private int postId;
     private EditText name, age, species, description, telephone, town;
-    private Button editPostBtn;
+    private Button editPostBtn, deletePostBtn;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -40,7 +40,9 @@ public class EditPostActivity extends AppCompatActivity {
         telephone = findViewById(R.id.editPostPhone);
         town = findViewById(R.id.editPostTown);
         editPostBtn = findViewById(R.id.editPostBtn);
+        deletePostBtn = findViewById(R.id.deletePostBtn);
         editPostBtn.setOnClickListener(this::editPost);
+        deletePostBtn.setOnClickListener(this::deletePost);
 
 
 
@@ -64,10 +66,27 @@ public class EditPostActivity extends AppCompatActivity {
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(EditPostActivity.this, LoginActivity.class);
                 startActivity(intentDonation);
+                finish();
             }
             return false;
         });
 
+    }
+
+    private void deletePost(View view) {
+        boolean postDeleted = databaseHelper.deletePost(postId);
+        if (postDeleted) {
+            Toast.makeText(this, "Το post διαγράφτηκε με επιτυχία", Toast.LENGTH_LONG).show();
+            goToMain();
+        } else {
+            Toast.makeText(this, "Kάτι πήγε λάθος", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void goToMain() {
+        Intent intent = new Intent(EditPostActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     public void setUpToolbar() {

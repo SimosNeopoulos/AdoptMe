@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intentDonation);
+                finish();
             }
             return false;
         });

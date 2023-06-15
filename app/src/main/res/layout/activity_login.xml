@@ -69,6 +69,7 @@
         android:layout_width="240dp"
         android:layout_height="36dp"
         android:text="Δεν έχεις account? Κάνε εγγραφή!"
+        android:onClick="goToSignUp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.549"

@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         logInText.setOnClickListener(this::goToSignUp);
     }
 
-    private void goToSignUp(View view) {
+    public void goToSignUp(View view) {
         Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
         startActivity(intent);
         finish();
