@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         postListView = findViewById(R.id.postListView);
         posts = getPosts();
-        adapter = new PostAdapter(getApplicationContext(), posts);
+        adapter = new PostAdapter(getApplicationContext(), (posts == null) ? new ArrayList<>() : posts);
         postListView.setAdapter(adapter);
         postListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
