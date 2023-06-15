@@ -34,4 +34,5 @@
     <string name="myprofile">Το προφίλ μου</string>
     <string name="logout">Αποσύνδεση</string>
     <string name="poster_name">Όνομα χρήστη</string>
+    <string name="delete">ΔΙΑΓΡΑΦΗ</string>
 </resources>
