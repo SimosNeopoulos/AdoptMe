@@ -35,4 +35,10 @@
     <string name="logout">Αποσύνδεση</string>
     <string name="poster_name">Όνομα χρήστη</string>
     <string name="delete">ΔΙΑΓΡΑΦΗ</string>
+    <string name="Pet_name">Όνομα:</string>
+    <string name="pet_age">Ήλικια:</string>
+    <string name="pet_city">Πολη/Περιοχή:</string>
+    <string name="pet_species">Είδος:</string>
+    <string name="app_name_header">Adopt Me</string>
+    <string name="sign_up_from_login">Δεν έχεις account? Κάνε εγγραφή!</string>
 </resources>

@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class ViewPostActivity extends AppCompatActivity {
     SessionManager sessionManager;
 
-    DatabaseHelper databaseHelper;
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
