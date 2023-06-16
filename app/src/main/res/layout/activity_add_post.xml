@@ -17,7 +17,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/addPostToolbar"
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -26,7 +26,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:title="Δημιουργία αγγελίας" />
+        app:title="Δημιουργία αγγελίας"
+        app:titleTextColor="@color/white"/>
 
     <EditText
         android:id="@+id/addPostDescription"
@@ -48,14 +49,14 @@
         android:layout_width="270dp"
         android:layout_height="51dp"
         android:layout_marginBottom="28dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/species"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/addPostTown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/addPostTown"

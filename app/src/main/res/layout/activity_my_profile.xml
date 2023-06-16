@@ -17,7 +17,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/profileToolbar"
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
