@@ -15,7 +15,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/viewPostToolbar"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="75dp"
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
@@ -57,7 +57,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="328dp"
             android:autofillHints=""
-
             android:ems="10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.468"

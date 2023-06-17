@@ -31,62 +31,63 @@
 
     <EditText
         android:id="@+id/profileName"
-        android:layout_width="305dp"
-        android:layout_height="56dp"
+        android:layout_width="456dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/name"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/profileEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileToolbar"
+        app:layout_constraintVertical_bias="0.787" />
+
+    <EditText
+        android:id="@+id/profileEmail"
+        android:layout_width="456dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/profilePassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245"
-        android:autofillHints="" />
-
-    <EditText
-        android:id="@+id/profileEmail"
-        android:layout_width="305dp"
-        android:layout_height="56dp"
-        android:ems="10"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.951" />
 
     <EditText
         android:id="@+id/profilePassword"
-        android:layout_width="305dp"
-        android:layout_height="56dp"
+        android:layout_width="456dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/profilePasswordVerification"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.959" />
 
     <EditText
         android:id="@+id/profilePasswordVerification"
-        android:layout_width="305dp"
-        android:layout_height="56dp"
+        android:layout_width="456dp"
+        android:layout_height="48dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/password_verification"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.741" />
 
     <Button
         android:id="@+id/profileBtn"
@@ -97,8 +98,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.832" />
+        app:layout_constraintTop_toBottomOf="@+id/profilePasswordVerification"
+        app:layout_constraintVertical_bias="0.724" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -17,106 +17,113 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/addPostToolbar"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="82dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:title="Δημιουργία αγγελίας"
-        app:titleTextColor="@color/white"/>
+        app:titleTextColor="@color/white" />
 
     <EditText
         android:id="@+id/addPostDescription"
         android:layout_width="270dp"
-        android:layout_height="82dp"
+        android:layout_height="51dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/description"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/addPostBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.941"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.683" />
 
     <EditText
         android:id="@+id/addPostSpecies"
         android:layout_width="270dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="1dp"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/species"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addPostTown"
+        app:layout_constraintBottom_toTopOf="@+id/addPostAge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addPostToolbar"
+        app:layout_constraintVertical_bias="0.358" />
 
     <EditText
         android:id="@+id/addPostTown"
         android:layout_width="270dp"
         android:layout_height="51dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginBottom="1dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/city"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addPostAge"
+        app:layout_constraintBottom_toTopOf="@+id/addPostPhone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/addPostPhone"
         android:layout_width="270dp"
         android:layout_height="51dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/contact_number"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addPostDescription"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.683" />
 
     <EditText
         android:id="@+id/addPostAge"
         android:layout_width="270dp"
         android:layout_height="51dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginBottom="1dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/age"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addPostPhone"
+        app:layout_constraintBottom_toTopOf="@+id/addPostDescription"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.914"
-        android:autofillHints="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/addPostName"
         android:layout_width="270dp"
         android:layout_height="51dp"
+        android:layout_marginTop="4dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/animal_name"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/addPostSpecies"
+        app:layout_constraintBottom_toTopOf="@+id/addPostTown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addPostToolbar"
-        app:layout_constraintVertical_bias="0.72"
-        android:autofillHints="" />
-
+        app:layout_constraintVertical_bias="0.378" />
     <Button
         android:id="@+id/addPostBtn"
         android:layout_width="167dp"
@@ -124,9 +131,10 @@
         android:text="@string/add_post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintVertical_bias="0.954" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
