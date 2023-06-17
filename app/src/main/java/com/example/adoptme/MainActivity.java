@@ -72,8 +72,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Post selectedPost = (Post) postListView.getItemAtPosition(position);
-                int postId = selectedPost.getUserId();
-                if (postId == sessionManager.getSessionId()) {
+                int userId = selectedPost.getUserId();
+                if (userId == sessionManager.getSessionId()) {
                     editPost(selectedPost);
                     return;
                 }
