@@ -31,7 +31,8 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.245" />
+        app:layout_constraintVertical_bias="0.245"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/signUpEmail"
@@ -45,7 +46,8 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
+        app:layout_constraintVertical_bias="0.38"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/signUpPassword"
@@ -58,7 +60,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.513" />
+        app:layout_constraintVertical_bias="0.513"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/signUpPasswordVerification"
@@ -72,13 +75,13 @@
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.645"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/signUpBtn"
         android:layout_width="153dp"
         android:layout_height="65dp"
-        android:onClick="signUp"
         android:text="@string/sign_up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +92,7 @@
     <TextView
         android:id="@+id/signUpToLogIn"
         android:layout_width="wrap_content"
-        android:layout_height="39dp"
+        android:layout_height="48dp"
         android:onClick="goToLogInPage"
         android:text="@string/click_to_log_in"
         android:textAlignment="center"

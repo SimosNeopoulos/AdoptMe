@@ -8,9 +8,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {

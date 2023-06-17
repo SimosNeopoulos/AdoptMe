@@ -82,7 +82,7 @@ public class MyProfileActivity extends AppCompatActivity {
         name.setText(userData.get(2));
     }
 
-    private void editProfile(View view) {
+    public void editProfile(View view) {
         String name, email, password, passwordVerification;
         name = this.name.getText().toString();
         email = this.email.getText().toString();
