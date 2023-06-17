@@ -3,6 +3,7 @@ package com.example.adoptme;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+// Κλάση που κρατάει τον χρήστη συνδεδεμένο με το Account του.
 public class SessionManager {
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;

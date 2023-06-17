@@ -1,14 +1,9 @@
 package com.example.adoptme;
 
+//Κλάση που προσομοιώνει τον χρήστη.
 public class User {
     private int id;
     private String name, email, password;
-
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-    }
 
     public User(int id, String name, String email, String password) {
         this.id = id;

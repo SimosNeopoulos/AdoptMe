@@ -45,7 +45,6 @@ public class EditPostActivity extends AppCompatActivity {
         deletePostBtn.setOnClickListener(this::deletePost);
 
 
-
         Intent intent = getIntent();
 
         if (intent != null) {
@@ -54,14 +53,19 @@ public class EditPostActivity extends AppCompatActivity {
         setUpToolbar();
         navigationView = findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(menuItem -> {
-            if(menuItem.getItemId() == R.id.mainpage){
+
+            // Μεταφορά στο MainActivity
+            if (menuItem.getItemId() == R.id.mainpage) {
                 Intent intentMain = new Intent(EditPostActivity.this, MainActivity.class);
                 startActivity(intentMain);
 
-            }else if(menuItem.getItemId() == R.id.my_profile){
+            // Μεταφορά στο MyProfileActivity
+            } else if (menuItem.getItemId() == R.id.my_profile) {
                 Intent intentDonation = new Intent(EditPostActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
-            }else if(menuItem.getItemId() == R.id.logout){
+
+            // Αποσύνδεση χρήστη
+            } else if (menuItem.getItemId() == R.id.logout) {
                 sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
                 Intent intentDonation = new Intent(EditPostActivity.this, LoginActivity.class);
@@ -95,8 +99,9 @@ public class EditPostActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState( );
+        actionBarDrawerToggle.syncState();
     }
+
     private void setTextFields(Intent intent) {
         ArrayList<String> data = intent.getStringArrayListExtra("edit");
         if (data == null)

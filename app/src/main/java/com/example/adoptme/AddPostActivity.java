@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
+// Activity για προσθήκη Post
 public class AddPostActivity extends AppCompatActivity {
 
     EditText name, age, species, description, telephone, town;
@@ -40,13 +41,18 @@ public class AddPostActivity extends AppCompatActivity {
         setUpToolbar();
         navigationView = findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(menuItem -> {
+
+            // Μεταφορά στο MainActivity
             if (menuItem.getItemId() == R.id.mainpage) {
                 Intent intentMain = new Intent(AddPostActivity.this, MainActivity.class);
                 startActivity(intentMain);
 
+            // Μεταφορά στο MyProfileActivity
             } else if (menuItem.getItemId() == R.id.my_profile) {
                 Intent intentDonation = new Intent(AddPostActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
+
+            // Αποσύνδεση χρήστη
             } else if (menuItem.getItemId() == R.id.logout) {
                 sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();

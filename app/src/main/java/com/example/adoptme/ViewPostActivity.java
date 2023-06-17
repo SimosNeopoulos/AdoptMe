@@ -14,9 +14,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+// Activity για αναλυτική προβολή Post
 public class ViewPostActivity extends AppCompatActivity {
     SessionManager sessionManager;
-
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -31,13 +31,17 @@ public class ViewPostActivity extends AppCompatActivity {
         setUpToolbar();
         navigationView = findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(menuItem -> {
+            // Μεταφορά στο MainActivity
             if (menuItem.getItemId() == R.id.mainpage) {
                 Intent intentMain = new Intent(ViewPostActivity.this, MainActivity.class);
                 startActivity(intentMain);
 
+            // Μεταφορά στο MyProfileActivity
             } else if (menuItem.getItemId() == R.id.my_profile) {
                 Intent intentDonation = new Intent(ViewPostActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
+
+            // Αποσύνδεση χρήστη
             } else if (menuItem.getItemId() == R.id.logout) {
                 sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();
@@ -47,10 +51,8 @@ public class ViewPostActivity extends AppCompatActivity {
             }
             return false;
         });
-
         initialiseTextViews();
         setTextViews(getIntent());
-
     }
 
     private void initialiseTextViews() {
@@ -63,6 +65,7 @@ public class ViewPostActivity extends AppCompatActivity {
     }
 
     private void setTextViews(Intent intent) {
+        // Αν δεν υπάρχει intent στα ματάει η κλήση της συνάρτησης
         if (intent == null) {
             return;
         }
@@ -71,6 +74,7 @@ public class ViewPostActivity extends AppCompatActivity {
         if (data == null)
             return;
 
+        // Συμπληρώση των παιδίων με τα δεδομένα του post
         petName.setText(data.get(1));
         petAge.setText(data.get(2));
         species.setText(data.get(3));

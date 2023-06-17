@@ -45,13 +45,18 @@ public class MyProfileActivity extends AppCompatActivity {
         setUpToolbar();
         navigationView = findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(menuItem -> {
+
+            // Μεταφορά στο MainActivity
             if(menuItem.getItemId() == R.id.mainpage){
                 Intent intentMain = new Intent(MyProfileActivity.this, MainActivity.class);
                 startActivity(intentMain);
 
+            // Μεταφορά στο MyProfileActivity
             }else if(menuItem.getItemId() == R.id.my_profile){
                 Intent intentDonation = new Intent(MyProfileActivity.this, MyProfileActivity.class);
                 startActivity(intentDonation);
+
+            // Αποσύνδεση χρήστη
             }else if(menuItem.getItemId() == R.id.logout){
                 sessionManager.deleteSession();
                 Toast.makeText(this, "Επιτυχής Αποσύνδεση", Toast.LENGTH_SHORT).show();

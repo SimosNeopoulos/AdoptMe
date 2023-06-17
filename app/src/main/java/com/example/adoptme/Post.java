@@ -2,6 +2,8 @@ package com.example.adoptme;
 
 import java.util.ArrayList;
 
+
+// Κλάση που προσομιώνει τα posts
 public class Post {
     private int postId;
     private String townName;
@@ -57,6 +59,7 @@ public class Post {
         return phoneNumber;
     }
 
+    // Συνάρτηση που επιστρέφει τα πεδία του Post μέσα σε ArrayList<String>
     public ArrayList<String> toStringArraylist() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(Integer.toString(postId));

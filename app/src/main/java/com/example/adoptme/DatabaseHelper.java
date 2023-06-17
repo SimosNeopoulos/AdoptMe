@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
+//Κλάση που χειρίζεται την βάση δεδομένων
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String databaseName = "AdoptMe.sqlite";
 
@@ -19,10 +20,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDatabase) {
+        // Table για τους users με index στο column email
         MyDatabase.execSQL("CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 " email TEXT UNIQUE, password TEXT, name TEXT)");
         MyDatabase.execSQL("CREATE INDEX idx_email ON users(email)");
 
+        //Table για τα posts με index στα columns town, species, userId και age
         MyDatabase.execSQL("CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT, town TEXT," +
                 "species TEXT, pet_name TEXT, age INTEGER, phone_number TEXT, userId INTEGER," +
                 "post_discription TEXT)");
@@ -37,6 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDB.execSQL("drop Table if exists users");
     }
 
+    // Δημιουργία χρήστη
     public int createProfile(String email, String password, String name) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -47,6 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return Integer.parseInt(String.valueOf(result));
     }
 
+    // Update στα δεδομένα ενός χρηστη με id ίδιο με την τιμη της μεταβλητητς id
     public boolean updateProfile(String id, String email, String password, String name) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -57,6 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return rowsAffected > 0;
     }
 
+    // Δημιουργία Post
     public boolean insertPost(String town, String species, String petName, int age, String phoneNumber,
                               int userId, String post_discription) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
@@ -71,6 +77,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long post_id = MyDatabase.insert("posts", null, contentValues);
         return post_id != -1;
     }
+
+    // Update στα δεδομένα ενός post με id ίδιο με την τιμη της μεταβλητητς postId
     public void updatePost(int postId, String town, String species, String petName, int age, String phoneNumber,
                               String post_discription) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
@@ -85,24 +93,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MyDatabase.update("posts", contentValues, "id = ?", whereArgs);
     }
 
+    // Delete post με id ίδιο με την τιμη της μεταβλητητς postId
     public boolean deletePost(int postId) {
         SQLiteDatabase myDatabase = this.getWritableDatabase();
         int deletedRows = myDatabase.delete("posts", "id = ?", new String[]{String.valueOf(postId)});
         return deletedRows > 0;
     }
 
+    // Ελενχος για την ύπαρξη χρηστη με email ίδιο με την μεταβλητη email
     public Boolean checkEmail(String email) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ?", new String[]{email});
         return cursor.getCount() > 0;
     }
 
-    public ArrayList<Post> getPosts(String queryParameters, String townName, String species, int postId, int userId) {
+    // Συνάρτηση που επιστρέφει ArrayList με Posts.
+    // Τα posts τα οποία επίστρεφει εξαρτόνται απο τιμη που έχει η μεταβλητη queryParameters
+    // Οι πιθανές τιμες είναι οι εξείς: null, "uid", "pid"
+    // null: Επιστρέφει όλα τα posts
+    // "uid": Επιστέφει όλα τα posts με id ίδιο με την τίμη της μεταβλητης userId
+    // "pid": Επιστέφει όλα τα posts με id ίδιο με την τίμη της μεταβλητης postId
+    public ArrayList<Post> getPosts(String queryParameters, int postId, int userId) {
         ArrayList<Post> posts = new ArrayList<>();
-        Cursor cursor = getPostsFromDatabase(queryParameters, townName, species, postId, userId);
+
+        // Τα Δέδομένα απο το database
+        Cursor cursor = getPostsFromDatabase(queryParameters, postId, userId);
+
+        // Έλενχος για το αν δεν επιστράφηκε τίποτα
         if (cursor == null)
             return null;
 
+        // Μετατροπή των δεδομένων σε αντικείμενα Post τα οποία προστήθονται σε ArrayList
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(0);
@@ -119,6 +140,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return posts;
     }
 
+    // Επιστροφή των δεδομένων του χρήστη με id ίσο με την τιμη της μεταβλητης id
+    // σε ArrayList<String>
     public ArrayList<String> getUserById(int id) {
         ArrayList<String> userData = new ArrayList<>();
         @SuppressLint("Recycle") Cursor cursor;
@@ -134,7 +157,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return null;
     }
 
-    private Cursor getPostsFromDatabase(String queryParameters, String townName, String species, int postId, int userId) {
+    // Συνάρτηση που επιστρέφει ακατέργαστα τα δεδομένα (post) που ζητήθηκαν.
+    // Αν δεν βρεθεί κανένα post στην αναζήτηση επιστρέφεται η τιμη null
+    private Cursor getPostsFromDatabase(String queryParameters, int postId, int userId) {
         @SuppressLint("Recycle") Cursor cursor = null;
         SQLiteDatabase myDatabase = this.getWritableDatabase();
         if (queryParameters == null) {
@@ -149,6 +174,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return (cursor.getCount() > 0) ? cursor : null;
     }
 
+    // Επιστρέφει τον χρήστη με κωδικο και email ίδιο με τις μεταβλητες email και password.
+    // Αν δεν βρεθει κάποιος χρήστης επιστρέφει null
     public User checkEmailPassword(String email, String password) {
         SQLiteDatabase MyDatabase = this.getWritableDatabase();
         @SuppressLint("Recycle") Cursor cursor = MyDatabase.rawQuery("Select * from users where email = ? and password = ?", new String[]{email, password});
